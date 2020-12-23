@@ -18,6 +18,7 @@ function displayProduct(product) {
 fetch('http://localhost:3000/api/teddies')
   .then(res => res.json())
   .then(products => {
+    document.getElementById("productsList").innerHTML = ""
     products.forEach(product => {
       displayProduct(product)
     });

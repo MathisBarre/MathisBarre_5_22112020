@@ -20,23 +20,30 @@
       </nav>
     </header>
     <ul id="productsList" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
-      <template id="product">
-        <li class="list-none bg-oniPink rounded-md p-2 transition duration-200 transform hover:scale-105">
-          <a href="teddies.html">
-            <figure>
-              <img id="productImage" class="rounded h-64 w-full object-cover" src="" alt="">
-              <figcaption class="pt-2">
-                <div class="flex justify-between items-center mb-1">
-                  <h2 id="productName" class="font-bold "></h2>
-                  <span id="productPrice" class="text-sm font-bold bg-white px-2 py-1 rounded"></span>
-                </div>
-                <p id="productDescription" class="text-black text-opacity-80 text-sm text-justify"></p>
-              </figcaption>
-            </figure>
-          </a>
-        </li>
-      </template>
+      <div class="bg-oniPink animate-pulse h-80"></div>
+      <div class="bg-oniPink animate-pulse h-80"></div>
+      <div class="bg-oniPink animate-pulse h-80"></div>
+      <div class="bg-oniPink animate-pulse h-80"></div>
+      <div class="bg-oniPink animate-pulse h-80"></div>
+      <div class="bg-oniPink animate-pulse h-80"></div>
     </ul>
   </div>
+
+  <template id="product">
+    <li class="list-none bg-oniPink rounded-md p-2 transition duration-200 transform hover:scale-105">
+      <a href="teddies.html">
+        <figure>
+          <img id="productImage" class="rounded h-64 w-full object-cover" src="" alt="">
+          <figcaption class="pt-2">
+            <div class="flex justify-between items-center mb-1">
+              <h2 id="productName" class="font-bold "></h2>
+              <span id="productPrice" class="text-sm font-bold bg-white px-2 py-1 rounded"></span>
+            </div>
+            <p id="productDescription" class="text-black text-opacity-80 text-sm text-justify"></p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
+  </template>
 </body>
 </html>
