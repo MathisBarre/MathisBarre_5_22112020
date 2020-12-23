@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Orinoco</title>
   <link href="./styles/compiled.css" rel="stylesheet">
+  <script src="./js/index.js" defer></script>
 </head>
 <body>
-  <div class="container mx-auto">
-    <header class="flex justify-between items-center rounded-lg mt-8 w-full bg-oniPink py-2 px-8">
+  <div class="container mx-auto px-4 py-8">
+    <header class="flex justify-between items-center rounded-lg w-full bg-oniPink py-2 px-6">
       <a href="/"><img class="h-20 bg-oniPink" src="./images/logo.png" alt="Orinico"></a>
       <nav class="flex">
         <ul class="list-none font-semibold">
@@ -18,6 +19,24 @@
         </ul>
       </nav>
     </header>
+    <ul id="productsList" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-4">
+      <template id="product">
+        <li class="list-none bg-oniPink rounded-md p-2 transition duration-200 transform hover:scale-105">
+          <a href="teddies.html">
+            <figure>
+              <img id="productImage" class="rounded h-64 w-full object-cover" src="" alt="">
+              <figcaption class="pt-2">
+                <div class="flex justify-between items-center mb-1">
+                  <h2 id="productName" class="font-bold "></h2>
+                  <span id="productPrice" class="text-sm font-bold bg-white px-2 py-1 rounded"></span>
+                </div>
+                <p id="productDescription" class="text-black text-opacity-80 text-sm text-justify"></p>
+              </figcaption>
+            </figure>
+          </a>
+        </li>
+      </template>
+    </ul>
   </div>
 </body>
 </html>
