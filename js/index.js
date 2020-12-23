@@ -18,9 +18,10 @@ function displayProduct(product) {
 fetch('http://localhost:3000/api/teddies')
   .then(res => res.json())
   .then(products => {
+    // Clear loading box
     document.getElementById("productsList").innerHTML = ""
-    products.forEach(product => {
-      displayProduct(product)
-    });
+
+    // Display each product 
+    products.forEach(product => {displayProduct(product)});
   })
   .catch(error => alert(error))
