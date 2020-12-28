@@ -19,8 +19,9 @@
         </ul>
       </nav>
     </header>
+
     <article class="flex flex-col items-stretch lg:flex-row mt-4 rounded-md w-full p-4 bg-oniPink">
-      <div class="w-1/2 min-w-1/2 h-full mr-4">
+      <div class="w-full lg:w-1/2 md:min-w-1/2 h-full mr-4">
         <img id="productImage" class="rounded object-cover" src="" alt="">
       </div>
       <div class="flex flex-col flex-wrap items-start w-full">
@@ -43,14 +44,14 @@
         <p id="productDescription" class="text-black text-opacity-80 text-justify mt-4"></p>
         <div class="flex-grow"></div>
         <h2 class="text-bold font-lg font-bold mt-4">Couleur de votre produit : </h2>
-        <div class="grid grid-cols-4 gap-4 mt-4 w-full">
-          <div id="productColor1" class="h-12 sm:h-20 cursor-pointer flex-grow bg-white rounded transition duration-150 transform hover:scale-105" style="background-color: tan;"></div>
-          <div id="productColor2" class="h-12 sm:h-20 cursor-pointer flex-grow bg-white rounded transition duration-150 transform hover:scale-105" style="background-color: chocolate;"></div>
-          <div id="productColor3" class="h-12 sm:h-20 cursor-pointer flex-grow bg-white rounded transition duration-150 transform hover:scale-105" style="background-color: black;"></div>
-          <div id="productColor4" class="h-12 sm:h-20 cursor-pointer flex-grow bg-white rounded transition duration-150 transform hover:scale-105" style="background-color: white;"></div>
+        <div id="productColors" class="grid gap-4 mt-4 w-full">
+          <template id="productColor">
+            <div class="h-12 sm:h-20 cursor-pointer flex-grow bg-white rounded transition duration-150 transform hover:scale-105" style="background-color: tan;"></div>
+          </template>
         </div>
         <button class="w-full bg-pink-600 text-white text-center font-bold text-lg rounded mt-4 py-2 mb transition duration-150 transform hover:scale-102">Ajouter au panier pour <span id="productPrice"></span></button>
       </div>
     </article>
 </body>
+
 </html>

@@ -1,19 +1,19 @@
 function displayProduct(product) {
   // Get template
-  const template = document.getElementById('product')
+  const templateElt = document.getElementById('product')
 
   // Clone template
-  const clone = document.importNode(template.content, true)
+  const cloneElt = document.importNode(templateElt.content, true)
 
   // Hydrate template
-  clone.getElementById('productImage').src = product.imageUrl
-  clone.getElementById('productName').textContent = product.name
-  clone.getElementById('productPrice').textContent = `${product.price / 100}.00 €`
-  clone.getElementById('productDescription').textContent = product.description
-  clone.getElementById('productLink').href = `/products.html?id=${product._id}`
+  cloneElt.getElementById('productImage').src = product.imageUrl
+  cloneElt.getElementById('productName').textContent = product.name
+  cloneElt.getElementById('productPrice').textContent = `${product.price / 100}.00 €`
+  cloneElt.getElementById('productDescription').textContent = product.description
+  cloneElt.getElementById('productLink').href = `/products.html?id=${product._id}`
 
   // Display template
-  document.getElementById('productsList').appendChild(clone)
+  document.getElementById('productsList').appendChild(cloneElt)
 }
 
 fetch('http://localhost:3000/api/teddies')

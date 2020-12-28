@@ -1,16 +1,29 @@
 function displayProduct(product) {
   console.log(product)
 
+  // Hydrate page with data
   document.getElementById('productImage').src = product.imageUrl
   document.getElementById('productName').textContent = product.name
   document.getElementById('productPrice').textContent = `${product.price / 100}.00 €`
   document.getElementById('productDescription').textContent = product.description
-  document.getElementById('productLink').href = `/products.html?id=${product._id}`
-  document.getElementById('productColor1').style.backgroundColor = product.colors[0]
-  document.getElementById('productColor2').style.backgroundColor = product.colors[1]
-  document.getElementById('productColor3').style.backgroundColor = product.colors[2]
-  document.getElementById('productColor4').style.backgroundColor = product.colors[3]
-  document.getElementById('productColor5').style.backgroundColor = product.colors[4]
+  document.getElementById('productColors').style.gridTemplateColumns = `repeat(${product.colors.length}, 1fr)`
+
+  // Get parent element
+  const colorsElt = document.getElementById('productColors')
+
+  product.colors.forEach(color => {
+    // Get template for one color
+    const templateElt = document.getElementById('productColor')
+
+    // Clone template
+    const cloneElt = document.importNode(templateElt.content, true)
+
+    // Hydrate color clone
+    cloneElt.querySelector('div').style.backgroundColor = color
+
+    // Display a new color
+    colorsElt.appendChild(cloneElt)
+  })
 }
 
 // Search the product ID in URL
