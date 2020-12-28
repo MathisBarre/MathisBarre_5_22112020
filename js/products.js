@@ -29,7 +29,7 @@ function displayProduct(product) {
 // Search the product ID in URL
 const productId = new URL(window.location.href).searchParams.get('id')
 
-fetch(`http://localhost:3000/api/teddies/${productId}`)
+fetch(`${apiUrl}/api/teddies/${productId}`)
   .catch(error => console.log(error))
   .then(response => response.json())
   .then(product => displayProduct(product))

@@ -16,7 +16,7 @@ function displayProduct(product) {
   document.getElementById('productsList').appendChild(cloneElt)
 }
 
-fetch('http://localhost:3000/api/teddies')
+fetch(`${apiUrl}/api/teddies`)
   .then(res => res.json())
   .then(products => {
     // Clear loading box
