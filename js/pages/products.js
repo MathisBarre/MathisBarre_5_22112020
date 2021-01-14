@@ -14,36 +14,20 @@ let productId, product
       product = productData
       displayProduct(product)
     })
+
+  // Add event listeners
+  document.getElementById('addToCart').addEventListener('click', addProductToCart )
 })()
 
-// Manage click on button 'add to cart'
-document.getElementById('addToCart').addEventListener('click', (e) => {
+function addProductToCart(e) {
   e.preventDefault()
 
-  // Get current shopping cart
-  let shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
-
-  // Manage empty or bad localStorage
-  if ( shoppingCart === null || typeof shoppingCart !== "object" ) shoppingCart = {}
-
-  // If product is already in cart
-  if ( shoppingCart[product._id] ) {
-    // Increase quantity
-    shoppingCart[product._id].quantity++
-  } else {
-    // Add product
-    shoppingCart[product._id] = {
-      quantity: 1,
-      ...product
-    }
-  }
-
-  // Save new shopping cart
-  localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart))
+  // 
+  Cart.addProduct()
 
   // Redirect to shopping cart page
-  window.location.href = `${window.location.origin}/cart.html?lastAddedProductId=${product._id}`
-})
+  window.location.href = `${window.location.origin}/cart.html?lastAddedProductName=${product.name}`
+}
 
 // Hydrate product with api data 
 function displayProduct(product) {

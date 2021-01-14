@@ -6,7 +6,8 @@
   <title>Panier - Orinoco</title>
   <link href="./styles/compiled.css" rel="stylesheet">
   <script src="./js/config.js" defer></script>
-  <script src="./js/cart.js" defer></script>
+  <script src="./js/Cart.js" defer></script>
+  <script src="./js/pages/cart.js" defer></script>
 </head>
 <body>
   <div class="container mx-auto px-4 py-8">
@@ -24,58 +25,63 @@
     <!-- HEADER -->
 
     <!-- THANKS -->
-    <section class="mt-4 rounded-md w-full p-4 bg-oniPink">
+    <!-- <section class="mt-4 rounded-md w-full p-4 bg-oniPink">
       <p class="text-center text-4xl text-up font-bold my-4">Jean vous remercie de l'avoir adopté !</p>
-    </section>
+    </section> -->
     <!-- THANKS -->
 
     <!-- CART -->
     <section class="mt-4 rounded-md w-full px-4 pt-4 bg-oniPink">
       <h2 class="text-lg font-bold mb-2">État de votre panier :</h2>
+      <p id="noProduct" class="pb-4">Aucun produit dans le panier</p>
 
-      <!-- PRODUCT -->
-      <article class="flex pb-4">
-        <img class="w-42 h-32 object-cover" src="http://localhost:3000/images/teddy_1.jpg" alt="">
-        <div class="ml-4">
-          <h1 class="w-full text-xl font-bold mb-2">Ours en peluche "<span id="productName">Arnold</span>"</h1>
-          <div class="flex items-center">
-            <img class="h-5" src="./images/star.svg" alt="">
-            <img class="h-5" src="./images/star.svg" alt="">
-            <img class="h-5" src="./images/star.svg" alt="">
-            <img class="h-5" src="./images/star.svg" alt="">
-            <img class="h-5" src="./images/star.svg" alt="">
-            <p class="ml-2"><span class="underline cursor-pointer">56 avis</span> - <span class="underline cursor-pointer">12 produits en stock</span></p>
-          </div>
-          <p id="productDescription" class="text-black text-opacity-80 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <form class="flex mt-3">
-            <button class="flex items-center justify-center bg-white rounded-l-md h-8 w-8 border-t border-l border-b border-gray-200">
-              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-            </button>
-            <select class="w-24 border border-gray-200 block pl-3 pr-10 py-1 text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-10" name="quantity" id="quantity">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-            </select>
-            <button class="flex items-center justify-center bg-white rounded-r-md h-8 w-8 border-t border-r border-b border-gray-200">
-              <svg  class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-              </svg>
-            </button>
-          </form>
-        </div>
-      </article>
-      <!-- PRODUCT -->
+      <div id="productsList">
+        <!-- PRODUCT -->
+        <template id="product">
+          <article class="flex pb-4" id="productContainer">
+            <img class="w-48 h-32 object-cover"id="productImage" src="http://localhost:3000/images/teddy_1.jpg" alt="">
+            <div class="ml-4">
+              <h1 class="w-full text-xl font-bold mb-2">Ours en peluche "<span id="productName">Arnold</span>"</h1>
+              <div class="flex items-center">
+                <img class="h-5" src="./images/star.svg" alt="">
+                <img class="h-5" src="./images/star.svg" alt="">
+                <img class="h-5" src="./images/star.svg" alt="">
+                <img class="h-5" src="./images/star.svg" alt="">
+                <img class="h-5" src="./images/star.svg" alt="">
+                <p class="ml-2"><span class="underline cursor-pointer">56 avis</span> - <span class="underline cursor-pointer">12 produits en stock</span></p>
+              </div>
+              <p id="productDescription" class="text-black text-opacity-80 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <form class="flex mt-3">
+                <button id="productQuantityMinus" class="flex items-center justify-center bg-white rounded-l-md h-8 w-8 border-t border-l border-b border-gray-200">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                  </svg>
+                </button>
+                <select id="productQuantity" class="w-24 border border-gray-200 block pl-3 pr-10 py-1 text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-10" name="quantity" id="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                <button id="productQuantityPlus" class="flex items-center justify-center bg-white rounded-r-md h-8 w-8 border-t border-r border-b border-gray-200">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </article>
+        </template>
+        <!-- PRODUCT -->
+      </div>
 
     </section>
     <!-- CART -->
