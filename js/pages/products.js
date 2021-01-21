@@ -22,10 +22,8 @@ let productId, product
 function addProductToCart(e) {
   e.preventDefault()
 
-  // 
-  Cart.addProduct()
+  Cart.addProduct(product)
 
-  // Redirect to shopping cart page
   window.location.href = `${window.location.origin}/cart.html?lastAddedProductName=${product.name}`
 }
 
