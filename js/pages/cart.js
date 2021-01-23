@@ -24,27 +24,17 @@ function displayProduct(product) {
   const cloneElt = document.importNode(templateElt.content, true)
 
   // Hydrate template
-  const quantityElt = cloneElt.getElementById('productQuantity')
+  const selectQuantityElt = cloneElt.getElementById('productQuantity')
   cloneElt.getElementById('productImage').src = product.imageUrl
   cloneElt.getElementById('productName').textContent = product.name
   cloneElt.getElementById('productDescription').textContent = product.description
-  quantityElt.selectedIndex = product.quantity - 1
+  selectQuantityElt.selectedIndex = product.quantity - 1
 
-  // Add events
-  quantityElt.addEventListener('change', (e) => {
+  // Add events on selected option change 
+  selectQuantityElt.onchange = (e) => {
     e.preventDefault()
     Cart.updateProductQuantity(product._id, e.target.selectedIndex + 1)
-  })
-
-  // const productInCartQuantity = this.products[product._id].quantity
-  // cloneElt.getElementById('productQuantityPlus').addEventListener('click', (e) => {
-  //   e.preventDefault()
-  //   updateProductQuantity(product._id, productInCartQuantity)
-  // })
-  // cloneElt.getElementById('productQuantityMinus').addEventListener('click', (e) => {
-  //   e.preventDefault()
-  //   updateProductQuantity(product._id, productInCartQuantity)
-  // })
+  }
 
   // Display template
   document.getElementById('productsList').appendChild(cloneElt)
