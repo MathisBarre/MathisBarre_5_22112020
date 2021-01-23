@@ -36,6 +36,13 @@ class CartObject {
     const products = this.products
     return products[productId].quantity
   }
+
+  updateProductQuantity(productId, quantity) {
+    const products = this.products
+    products[productId].quantity = quantity
+    console.log(products)
+    this.products = products
+  }
 }
 
 const Cart = new CartObject()
