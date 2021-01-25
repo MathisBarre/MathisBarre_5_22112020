@@ -29,62 +29,92 @@
       <p class="text-center text-4xl text-up font-bold my-4">Jean vous remercie de l'avoir adopté !</p>
     </section> -->
     <!-- THANKS -->
+    
+    <div class="grid grid-cols-12 gap-4">
+      <!-- ORDER SUMMARY -->
+      <section class="mt-4 rounded-md col-span-5 p-4 bg-oniPink">
+        <h2 class="text-lg font-bold mb-2">Votre carte</h2>
+        <p id="noProduct" class="pb-4">Aucun produit dans le panier</p>
+        <table class="border-collapse w-full border border-black">
+          <thead>
+            <tr class="border-t border-b border-black">
+              <th>Produit</th>
+              <th>Quantité</th>
+              <th>Prix</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="productsList">
+            <tr class="border-t border-b border-black">
+              <td class="text-center p-0">Arnold</td>
+              <td class="text-center p-0">
+                <form class="flex">
+                  <select id="productQuantity" class="w-full border border-gray-200 block pl-3 pr-10 py-1 text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-10" name="quantity" id="quantity">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </form>
+              </td>
+              <td class="text-center p-0">130€</td>
+              <td class="text-center p-0">260€</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <!-- ORDER SUMMARY -->
 
-    <!-- CART -->
-    <section class="mt-4 rounded-md w-full px-4 pt-4 bg-oniPink">
-      <h2 class="text-lg font-bold mb-2">État de votre panier :</h2>
-      <p id="noProduct" class="pb-4">Aucun produit dans le panier</p>
-
-      <div id="productsList">
-        <!-- PRODUCT -->
-        <template id="product">
-          <article class="flex pb-4" id="productContainer">
-            <img class="w-48 h-32 object-cover"id="productImage" src="http://localhost:3000/images/teddy_1.jpg" alt="">
-            <div class="ml-4">
-              <h1 class="w-full text-xl font-bold mb-2">Ours en peluche "<span id="productName">Arnold</span>"</h1>
-              <div class="flex items-center">
-                <img class="h-5" src="./images/star.svg" alt="">
-                <img class="h-5" src="./images/star.svg" alt="">
-                <img class="h-5" src="./images/star.svg" alt="">
-                <img class="h-5" src="./images/star.svg" alt="">
-                <img class="h-5" src="./images/star.svg" alt="">
-                <p class="ml-2"><span class="underline cursor-pointer">56 avis</span> - <span class="underline cursor-pointer">12 produits en stock</span></p>
-              </div>
-              <p id="productDescription" class="text-black text-opacity-80 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <form class="flex mt-3">
-                <!-- <button id="productQuantityMinus" class="flex items-center justify-center bg-white rounded-l-md h-8 w-8 border-t border-l border-b border-gray-200">
-                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-                  </svg>
-                </button> -->
-                <select id="productQuantity" class="w-24 border border-gray-200 block pl-3 pr-10 py-1 text-base focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm z-10" name="quantity" id="quantity">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <!-- <button id="productQuantityPlus" class="flex items-center justify-center bg-white rounded-r-md h-8 w-8 border-t border-r border-b border-gray-200">
-                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                </button> -->
-              </form>
-            </div>
-          </article>
-        </template>
-        <!-- PRODUCT -->
-      </div>
-
-    </section>
-    <!-- CART -->
+      <!-- PURCHASE FORM -->
+      <section class="mt-4 rounded-md col-span-7 p-4 bg-oniPink">
+        <h2 class="text-lg font-bold mb-2">Passer commande</h2>
+        <div class="grid grid-cols-4 gap-4">
+          <div class="flex flex-col">
+            <label for="firstName" class="label">Prénom</label>
+            <input type="text" name="firstName" id="firstName" class="input">
+          </div>
+          <div class="flex flex-col">
+            <label for="lastName" class="label">Nom</label>
+            <input type="text" name="lastName" id="lastName" class="input">
+          </div>
+          <div class="flex flex-col col-span-2">
+            <label for="email" class="label">Adresse e-mail</label>
+            <input type="text" name="email" id="email" class="input">
+          </div>
+          <div class="flex flex-col col-span-2">
+            <label for="adress" class="label">Adresse</label>
+            <input type="text" name="adress" id="adress" class="input">
+          </div>
+          <div class="flex flex-col">
+            <label for="zipCode" class="label">Code postal</label>
+            <input type="text" name="zipCode" id="zipCode" class="input">
+          </div>
+          <div class="flex flex-col">
+            <label for="city" class="label">Ville</label>
+            <input type="text" name="city" id="city" class="input">
+          </div>
+        </div>
+          <div class="flex justify-end">
+            <a
+              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm
+              font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
+              focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-6"
+              href="#"
+            >
+              Procéder au paiement
+            </a>
+          </div>
+      </section>
+      <!-- PURCHASE FORM -->
+    </div>
   </div>
 </body>
 </html>

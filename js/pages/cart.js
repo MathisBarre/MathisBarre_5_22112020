@@ -15,7 +15,6 @@
   })
 })()
 
-// Display one product from product template
 function displayProduct(product) {
   // Get template
   const templateElt = document.getElementById('product')
@@ -25,9 +24,9 @@ function displayProduct(product) {
 
   // Hydrate template
   const selectQuantityElt = cloneElt.getElementById('productQuantity')
-  cloneElt.getElementById('productImage').src = product.imageUrl
+  // cloneElt.getElementById('productImage').src = product.imageUrl
   cloneElt.getElementById('productName').textContent = product.name
-  cloneElt.getElementById('productDescription').textContent = product.description
+  // cloneElt.getElementById('productDescription').textContent = product.description
   selectQuantityElt.selectedIndex = product.quantity - 1
 
   // Add events on selected option change 
@@ -38,4 +37,26 @@ function displayProduct(product) {
 
   // Display template
   document.getElementById('productsList').appendChild(cloneElt)
+}
+
+function verifyForm() {
+
+}
+
+function sendOrder() {
+  const orderJsonExample = {
+    "contact": {
+      "firstName": "Mathis",
+      "lastName": "Barré",
+      "address": "17 rue du 3 septembre 49320",
+      "city": "Gennes Val de Loire",
+      "email": "mathis.barre@live.fr"
+    },
+    "products": [
+      "5be9c8541c9d440000665243",
+      "5be9c8541c9d440000665243",
+      "5be9c8541c9d440000665243",
+      "5be9c8541c9d440000665243"
+    ]
+  }
 }
