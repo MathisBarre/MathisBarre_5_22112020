@@ -1,34 +1,22 @@
-// Global variables
-let productId, product
-
-// Main function, auto called at load time
-(() => {
-  // Search the product ID in URL
-  productId = new URL(window.location.href).searchParams.get('id')
-
-  // Fetch product data
-  fetch(`${apiUrl}/api/teddies/${productId}`)
-    .catch(error => console.log(error))
-    .then(response => response.json())
-    .then(productData => {
-      product = productData
-      displayProduct(product)
-    })
-
-  // Add event listeners
-  document.getElementById('addToCart').addEventListener('click', addProductToCart )
+// Main function, auto executed at load time
+(async () => {
+  const productId = getProductId()
+  const productData = await getProductData(productId)
+  hydratePage(productData)
 })()
 
-function addProductToCart(e) {
-  e.preventDefault()
-
-  Cart.addProduct(product)
-
-  window.location.href = `${window.location.origin}/cart.html?lastAddedProductName=${product.name}`
+function getProductId() {
+  return new URL(window.location.href).searchParams.get('id')
 }
 
-// Hydrate product with api data 
-function displayProduct(product) {
+function getProductData(productId) {
+  return fetch(`${apiUrl}/api/teddies/${productId}`)
+    .catch(error => console.log(error))
+    .then(response => response.json())
+    .then(productData => productData)
+}
+
+function hydratePage(product) {
   // Hydrate page with data
   document.getElementById('productImage').src = product.imageUrl
   document.getElementById('productName').textContent = product.name
@@ -36,15 +24,20 @@ function displayProduct(product) {
   document.getElementById('productDescription').textContent = product.description
   document.getElementById('productColors').style.gridTemplateColumns = `repeat(${product.colors.length}, 1fr)`
 
+  // Add event listeners on button
+  document.getElementById('addToCart').addEventListener('click', (event) => {
+    event.preventDefault()
+    Cart.addProduct(product)
+    redirectToShoppingCart(product.name)
+  })
+
   // Get parent element
   const colorsElt = document.getElementById('productColors')
 
   // Display all colors
   product.colors.forEach(color => {
-    // Get template for one color
+    // Get & clone template for one color
     const templateElt = document.getElementById('productColor')
-
-    // Clone template
     const cloneElt = document.importNode(templateElt.content, true)
 
     // Hydrate color clone
@@ -53,4 +46,8 @@ function displayProduct(product) {
     // Display a new color
     colorsElt.appendChild(cloneElt)
   })
+}
+
+function redirectToShoppingCart(productName) {
+  window.location.href = `${window.location.origin}/cart.html?lastAddedProductName=${productName}`
 }
