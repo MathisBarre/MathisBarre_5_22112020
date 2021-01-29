@@ -25,11 +25,11 @@ function hydratePage(product) {
   document.getElementById('productColors').style.gridTemplateColumns = `repeat(${product.colors.length}, 1fr)`
 
   // Add event listeners on button
-  document.getElementById('addToCart').addEventListener('click', (event) => {
+  document.getElementById('addToCart').onclick = (event) => {
     event.preventDefault()
     Cart.addProduct(product)
     redirectToShoppingCart(product.name)
-  })
+  }
 
   // Get parent element
   const colorsElt = document.getElementById('productColors')
