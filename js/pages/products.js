@@ -11,8 +11,8 @@ function getProductId() {
 
 function getProductData(productId) {
   return fetch(`${apiUrl}/api/teddies/${productId}`)
-    .catch(error => console.log(error))
-    .then(response => response.json())
+    .catch(error => { console.log(error) })
+    .then(httpBodyResponse => httpBodyResponse.json())
     .then(productData => productData)
 }
 
