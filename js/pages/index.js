@@ -1,12 +1,7 @@
 // Main function, auto called at load time
 (async () => {
   const products = await getProducts()
-
-  // Clear loading box & display all products
-  document.getElementById('productsList').innerHTML = ''
-  products.forEach(product => {
-    displayProduct(product)
-  })
+  hydratePage(products)
 })()
 
 function getProducts() {
@@ -16,7 +11,16 @@ function getProducts() {
     .then(products => products)
 }
 
-// Display one product from product template
+function hydratePage(products) {
+  // Remove loading boxes
+  document.getElementById('productsList').innerHTML = ''
+
+  // Loop over all products and displays them
+  products.forEach(product => {
+    displayProduct(product)
+  })
+}
+
 function displayProduct(product) {
   // Get template
   const templateElt = document.getElementById('product')
