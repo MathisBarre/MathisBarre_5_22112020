@@ -1,16 +1,20 @@
 // Main function, auto called at load time
-(() => {
-  fetch(`${apiUrl}/api/teddies`)
-  .then(res => res.json())
-  .then(products => {
-    // Clear loading box
-    document.getElementById('productsList').innerHTML = ''
+(async () => {
+  const products = await getProducts()
 
-    // Display each product 
-    products.forEach(product => {displayProduct(product)});
+  // Clear loading box & display all products
+  document.getElementById('productsList').innerHTML = ''
+  products.forEach(product => {
+    displayProduct(product)
   })
-  .catch(error => alert(error))
 })()
+
+function getProducts() {
+  return fetch(`${apiUrl}/api/teddies`)
+    .catch(error => { alert(error) })
+    .then(httpBodyResponse => httpBodyResponse.json())
+    .then(products => products)
+}
 
 // Display one product from product template
 function displayProduct(product) {
