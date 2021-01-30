@@ -4,7 +4,7 @@
   hydratePage(products)
 })()
 
-function getProducts() {
+async function getProducts() {
   return fetch(`${apiUrl}/api/teddies`)
     .catch(error => { alert(error) })
     .then(httpBodyResponse => httpBodyResponse.json())

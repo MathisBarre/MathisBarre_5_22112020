@@ -42,7 +42,7 @@
               <th>Produit</th>
               <th>Quantité</th>
               <th>Prix</th>
-              <th>Total</th>
+              <!-- <th>Total</th> -->
             </tr>
           </thead>
           
@@ -69,7 +69,7 @@
                   </form>
                 </td>
                 <td id="productPrice" class="text-center p-0">x€</td>
-                <td id="productTotalPrice" class="text-center p-0">x€</td>
+                <!-- <td id="productTotalPrice" class="text-center p-0">x€</td> -->
               </tr>
             </template>
           </tbody>
@@ -82,12 +82,12 @@
         <h2 class="text-lg font-bold mb-2">Passer commande</h2>
         <div class="grid grid-cols-4 gap-4">
           <div class="flex flex-col">
-            <label for="firstName" class="label">Prénom</label>
-            <input type="text" name="firstName" id="firstName" class="input">
+            <label for="firstname" class="label">Prénom</label>
+            <input type="text" name="firstname" id="firstname" class="input">
           </div>
           <div class="flex flex-col">
-            <label for="lastName" class="label">Nom</label>
-            <input type="text" name="lastName" id="lastName" class="input">
+            <label for="lastname" class="label">Nom</label>
+            <input type="text" name="lastname" id="lastname" class="input">
           </div>
           <div class="flex flex-col col-span-2">
             <label for="email" class="label">Adresse e-mail</label>
@@ -98,8 +98,8 @@
             <input type="text" name="adress" id="adress" class="input">
           </div>
           <div class="flex flex-col">
-            <label for="zipCode" class="label">Code postal</label>
-            <input type="text" name="zipCode" id="zipCode" class="input">
+            <label for="zipcode" class="label">Code postal</label>
+            <input type="text" name="zipcode" id="zipcode" class="input">
           </div>
           <div class="flex flex-col">
             <label for="city" class="label">Ville</label>
@@ -108,6 +108,7 @@
         </div>
           <div class="flex justify-end">
             <a
+              id="confirmPurchase"
               class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm
               font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none
               focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-6"

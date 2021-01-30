@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accueil - Orinoco</title>
+  <link href="./styles/compiled.css" rel="stylesheet">
+  <script src="./js/config.js" defer></script>
+  <script src="./js/pages/orderStatus.js" defer></script>
+</head>
+<body>
+  <div class="container mx-auto px-4 py-8">
+    <!-- HEADER -->
+    <header class="flex justify-between items-center rounded-lg w-full bg-oniPink py-2 px-6">
+      <a href="/"><img class="h-20 bg-oniPink" src="./images/logo.png" alt="Orinico"></a>
+      <nav class="flex">
+        <ul class="list-none font-semibold">
+          <li>
+            <a class="px-4 py-4" href="./cart.html">Panier</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- HEADER -->
+
+    <main class="w-full bg-oniPink rounded-lg my-4 py-16 flex justify-center flex-col">
+      <p class="text-center text-4xl font-bold mb-4">Félicitation, votre commande à bien été prise en compte !</p>
+      <p class="text-center text-xl mb-4">Identifiant de votre commande : <span class="font-bold" id="commandId"></span></p>
+      <a class="inline-block uppercase text-center mx-auto bg-indigo-600 py-2 px-4 font-semibold rounded text-white" href="/">Retourner à l'accueil</a>
+    </main>
+</body>
+</html>
