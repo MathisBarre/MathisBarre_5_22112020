@@ -12,14 +12,14 @@ class CartObject {
 
     const productAlreadyInCarte = !!products[productObject._id]
 
-    if ( productAlreadyInCarte ) {
+    if (productAlreadyInCarte) {
       // Increase quantity
       products[productObject._id].quantity++
     } else {
       // Add product
       products[productObject._id] = {
         quantity: 1,
-        ...productObject
+        ...productObject,
       }
     }
 

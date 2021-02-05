@@ -1,14 +1,16 @@
 // Main function, auto called at load time
-(async () => {
+;(async () => {
   const products = await getProducts()
   hydratePage(products)
 })()
 
 async function getProducts() {
   return fetch(`${apiUrl}/api/teddies`)
-    .catch(error => { alert(error) })
-    .then(httpBodyResponse => httpBodyResponse.json())
-    .then(products => products)
+    .catch((error) => {
+      alert(error)
+    })
+    .then((httpBodyResponse) => httpBodyResponse.json())
+    .then((products) => products)
 }
 
 function hydratePage(products) {
@@ -16,7 +18,7 @@ function hydratePage(products) {
   document.getElementById('productsList').innerHTML = ''
 
   // Loop over all products and displays them
-  products.forEach(product => {
+  products.forEach((product) => {
     displayProduct(product)
   })
 }
@@ -31,9 +33,14 @@ function displayProduct(product) {
   // Hydrate template
   cloneElt.getElementById('productImage').src = product.imageUrl
   cloneElt.getElementById('productName').textContent = product.name
-  cloneElt.getElementById('productPrice').textContent = `${product.price / 100}.00 €`
-  cloneElt.getElementById('productDescription').textContent = product.description
-  cloneElt.getElementById('productLink').href = `/products.html?id=${product._id}`
+  cloneElt.getElementById('productPrice').textContent = `${
+    product.price / 100
+  }.00 €`
+  cloneElt.getElementById('productDescription').textContent =
+    product.description
+  cloneElt.getElementById(
+    'productLink'
+  ).href = `/products.html?id=${product._id}`
 
   // Display template
   document.getElementById('productsList').appendChild(cloneElt)

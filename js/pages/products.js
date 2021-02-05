@@ -1,5 +1,5 @@
 // Main function, auto executed at load time
-(async () => {
+;(async () => {
   const productId = getProductId()
   const productData = await getProductData(productId)
   hydratePage(productData)
@@ -11,18 +11,25 @@ function getProductId() {
 
 function getProductData(productId) {
   return fetch(`${apiUrl}/api/teddies/${productId}`)
-    .catch(error => { console.log(error) })
-    .then(httpBodyResponse => httpBodyResponse.json())
-    .then(productData => productData)
+    .catch((error) => {
+      console.log(error)
+    })
+    .then((httpBodyResponse) => httpBodyResponse.json())
+    .then((productData) => productData)
 }
 
 function hydratePage(product) {
   // Hydrate page with data
   document.getElementById('productImage').src = product.imageUrl
   document.getElementById('productName').textContent = product.name
-  document.getElementById('productPrice').textContent = `${product.price / 100}.00 €`
-  document.getElementById('productDescription').textContent = product.description
-  document.getElementById('productColors').style.gridTemplateColumns = `repeat(${product.colors.length}, 1fr)`
+  document.getElementById('productPrice').textContent = `${
+    product.price / 100
+  }.00 €`
+  document.getElementById('productDescription').textContent =
+    product.description
+  document.getElementById(
+    'productColors'
+  ).style.gridTemplateColumns = `repeat(${product.colors.length}, 1fr)`
 
   // Add event listeners on button
   document.getElementById('addToCart').onclick = (event) => {
@@ -35,7 +42,7 @@ function hydratePage(product) {
   const colorsElt = document.getElementById('productColors')
 
   // Display all colors
-  product.colors.forEach(color => {
+  product.colors.forEach((color) => {
     // Get & clone template for one color
     const templateElt = document.getElementById('productColor')
     const cloneElt = document.importNode(templateElt.content, true)
