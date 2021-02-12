@@ -33,11 +33,8 @@ function displayProduct(product) {
 
   // Hydrate template
   cloneElt.getElementById('productName').textContent = product.name
-  cloneElt.getElementById('productQuantity').selectedIndex =
-    product.quantity - 1
-  cloneElt.getElementById('productPrice').textContent =
-    product.price / 100 + '.00€'
-  // cloneElt.getElementById('productTotalPrice').textContent = (( product.price / 100 ) * product.quantity ) + ".00€"
+  cloneElt.getElementById('productQuantity').selectedIndex = product.quantity - 1
+  cloneElt.getElementById('productPrice').textContent = product.price / 100 + '.00€'
 
   // Add events
   cloneElt.getElementById('productQuantity').onchange = (e) => {
@@ -57,9 +54,7 @@ function sendOrder() {
   const firstname = document.getElementById('firstname').value
   const lastname = document.getElementById('lastname').value
   const adress =
-    document.getElementById('adress').value +
-    ' ' +
-    document.getElementById('zipcode').value
+    document.getElementById('adress').value + ' ' + document.getElementById('zipcode').value
   const email = document.getElementById('email').value
   const city = document.getElementById('city').value
 
