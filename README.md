@@ -27,7 +27,7 @@ Aucune maquette n'est donnée. Il est demandé d'improviser l'interface utilisat
 
 ### Expérience utilisateur
 
-- [ ] Les inputs du formulaire d'achat devront être validés avant l'envoi à l'API.
+- [x] Les inputs du formulaire d'achat devront être validés avant l'envoi à l'API.
 
 ## Tester l'application web
 
@@ -62,4 +62,4 @@ Pour le développement, il est conseillé d'utiliser l'extension "Live Server" d
 
 ## Documents
 
-Pour en savoir plus, veuillez consulter le document complet disponible [ici](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P5/P5_Spe%CC%81cifications%20fonctionnelles%20Orinoco%20(2).pdf)
+Pour en savoir plus, veuillez consulter le document complet disponible [ici](<https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P5/P5_Spe%CC%81cifications%20fonctionnelles%20Orinoco%20(2).pdf>)

@@ -6,11 +6,13 @@
 
 async function getProducts() {
   return fetch(`${apiUrl}/api/teddies`)
-    .catch((error) => {
-      alert(error)
-    })
     .then((httpBodyResponse) => httpBodyResponse.json())
     .then((products) => products)
+    .catch((error) => {
+      alert(
+        "La connexion au serveur n'a pas pu être effectué. Cela est certainement lié à l'endormissement du serveur Heroku, veuillez attendre quelques secondes le temps qu'il sorte de son lit puis réesayez"
+      )
+    })
 }
 
 function hydratePage(products) {
@@ -33,14 +35,9 @@ function displayProduct(product) {
   // Hydrate template
   cloneElt.getElementById('productImage').src = product.imageUrl
   cloneElt.getElementById('productName').textContent = product.name
-  cloneElt.getElementById('productPrice').textContent = `${
-    product.price / 100
-  }.00 €`
-  cloneElt.getElementById('productDescription').textContent =
-    product.description
-  cloneElt.getElementById(
-    'productLink'
-  ).href = `/products.html?id=${product._id}`
+  cloneElt.getElementById('productPrice').textContent = `${product.price / 100}.00 €`
+  cloneElt.getElementById('productDescription').textContent = product.description
+  cloneElt.getElementById('productLink').href = `/products.html?id=${product._id}`
 
   // Display template
   document.getElementById('productsList').appendChild(cloneElt)
