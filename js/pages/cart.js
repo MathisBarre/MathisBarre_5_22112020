@@ -71,13 +71,14 @@ function addEventListeners() {
   watchValidity(document.getElementById('lastname'), (e) => e.target.value.length > 1)
   watchValidity(document.getElementById('email'), (e) => {
     const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-    emailRegex.test(e.target.value)
+    return emailRegex.test(e.target.value)
   })
   watchValidity(document.getElementById('adress'), (e) => e.target.value.length > 6)
   watchValidity(document.getElementById('zipcode'), (e) => {
     const zipcodeRegex = /[0-9]{5}(-[0-9]{4})?/
-    zipcodeRegex.test(e.target.value)
+    return zipcodeRegex.test(e.target.value)
   })
+  watchValidity(document.getElementById('city'), (e) => e.target.value.length > 1)
 }
 
 function watchValidity(elt, condition) {
