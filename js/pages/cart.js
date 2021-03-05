@@ -14,6 +14,9 @@ function hydratePage(productsInShoppingCart) {
   // Remove "no product" text
   document.getElementById('noProduct').style.display = 'none'
 
+  // Set total price
+  document.getElementById('totalPrice').textContent = Cart.getTotalPrice() + '.00€'
+
   // Loop over all products and displays them
   const productList = Object.values(productsInShoppingCart)
   productList.forEach((product) => {
@@ -32,6 +35,8 @@ function displayProduct(product) {
   cloneElt.getElementById('productName').textContent = product.name
   cloneElt.getElementById('productQuantity').selectedIndex = product.quantity - 1
   cloneElt.getElementById('productPrice').textContent = product.price / 100 + '.00€'
+  cloneElt.getElementById('productTotalPrice').textContent =
+    (product.price * product.quantity) / 100 + '.00€'
 
   // Add events
   cloneElt.getElementById('productQuantity').onchange = (e) => {
@@ -39,12 +44,19 @@ function displayProduct(product) {
 
     Cart.updateProductQuantity(product._id, e.target.selectedIndex + 1)
 
-    cloneElt.getElementById('productTotalPrice').textContent =
-      (product.price / 100) * product.quantity + '.00€'
+    // Update product total price
+    const totalPriceElt = e.target.parentElement.parentElement.parentElement.querySelector(
+      '#productTotalPrice'
+    )
+    const newPrice = (product.price * Cart.getProductQuantity(product._id)) / 100 + '.00€'
+    totalPriceElt.textContent = newPrice
+
+    // Update all products total price
+    document.getElementById('totalPrice').textContent = Cart.getTotalPrice() + '.00€'
   }
 
   // Display template
-  document.getElementById('productsList').appendChild(cloneElt)
+  document.getElementById('productsList').prepend(cloneElt)
 }
 
 function addEventListeners() {
@@ -54,20 +66,23 @@ function addEventListeners() {
     sendOrder()
   }
 
-  // Form validation
-  const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-  const zipcodeRegex = /[0-9]{5}(-[0-9]{4})?/
-
-  watchValidity(document.getElementById('firstname'), 'e.target.value.length > 1')
-  watchValidity(document.getElementById('lastname'), 'e.target.value.length > 1')
-  watchValidity(document.getElementById('email'), emailRegex + '.test(e.target.value)')
-  watchValidity(document.getElementById('adress'), 'e.target.value.length > 6')
-  watchValidity(document.getElementById('zipcode'), zipcodeRegex + '.test(e.target.value)')
+  // Input validity
+  watchValidity(document.getElementById('firstname'), (e) => e.target.value.length > 1)
+  watchValidity(document.getElementById('lastname'), (e) => e.target.value.length > 1)
+  watchValidity(document.getElementById('email'), (e) => {
+    const emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+    emailRegex.test(e.target.value)
+  })
+  watchValidity(document.getElementById('adress'), (e) => e.target.value.length > 6)
+  watchValidity(document.getElementById('zipcode'), (e) => {
+    const zipcodeRegex = /[0-9]{5}(-[0-9]{4})?/
+    zipcodeRegex.test(e.target.value)
+  })
 }
 
 function watchValidity(elt, condition) {
   elt.oninput = (e) => {
-    if (eval(condition)) {
+    if (condition(e)) {
       validInputElt(e.target)
     } else {
       neutralInputElt(e.target)
@@ -75,7 +90,7 @@ function watchValidity(elt, condition) {
   }
 
   elt.onblur = (e) => {
-    if (!eval(condition)) {
+    if (!condition(e)) {
       invalidInputElt(e.target)
     }
   }

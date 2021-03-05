@@ -26,12 +26,6 @@ class CartObject {
     this.products = products
   }
 
-  setProductQuantity(productId, quantity) {
-    let products = this.products
-    products[productId] = quantity
-    this.products = products
-  }
-
   getProductQuantity(productId) {
     const products = this.products
     return products[productId].quantity
@@ -42,6 +36,14 @@ class CartObject {
     products[productId].quantity = quantity
     console.log(products)
     this.products = products
+  }
+
+  getTotalPrice() {
+    const products = this.products
+    const totalPrice = Object.values(products).reduce((acc, curr) => {
+      return acc + (curr.price * curr.quantity) / 100
+    }, 0)
+    return totalPrice
   }
 }
 

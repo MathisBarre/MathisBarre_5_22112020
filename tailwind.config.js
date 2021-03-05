@@ -3,21 +3,21 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      "backgroundColor" : {
-        oniPink: "#f3e9f1"
+      backgroundColor: {
+        oniPink: '#f3e9f1',
       },
-      "scale": {
-        "102":"1.02"
+      scale: {
+        102: '1.02',
       },
-      "minWidth": {
-        "1/2":"50%"
-      }
+      minWidth: {
+        '1/2': '50%',
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['even', 'odd'],
+    },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/forms')],
 }
