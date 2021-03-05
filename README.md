@@ -2,11 +2,11 @@
 
 Cinquième projet du parcours développeur web chez OpenClassrooms.
 
-L'objectif principale consiste en la création du front- []end d'un site e- []commerce en vanilla Javascript par la consommation d'un API préalablement fourni ([JWDP5](https://github.com/OpenClassrooms- []Student- []Center/JWDP5)).
+L'objectif principale consiste en la création du front-end d'un site e-commerce en vanilla Javascript par la consommation d'un API préalablement fourni ( [JWDP5](https://github.com/OpenClassrooms-Student-Center/JWDP5) ).
 
-Il ne s'agit là que d'un MVP, aucune réelle gestion des transaction n'est effectué par exemple.
+Il ne s'agit là que d'un MVP, aucune réelle gestion des transaction n'est effectué.
 
-Aucune maquette n'est donnée. Il est demandé d'improviser le design.
+Aucune maquette n'est donnée. Il est demandé d'improviser l'interface utilisateur.
 
 ## Cahier des charges
 
@@ -23,11 +23,41 @@ Aucune maquette n'est donnée. Il est demandé d'improviser le design.
 - [x] Le code devra être indenté
 - [x] Le code devra contenir des commentaires
 - [x] Les promesses devront être utilisées lors des appels ajax
-- [~] Le code devra être accompagné d'un document planifiant de futurs test unitaires
+- [ ] Le code devra être accompagné d'un document planifiant de futurs test unitaires
 
 ### Expérience utilisateur
 
-- [~] Les inputs du formulaire d'achat devront être validés avant l'envoi à l'API.
+- [ ] Les inputs du formulaire d'achat devront être validés avant l'envoi à l'API.
+
+## Tester l'application web
+
+### Tester le site en ligne
+
+Pour tester simplement l'application web, rendez-vous sur [orinoco.mathisbarre.com](https:// orinoco.mathisbarre.com)
+
+### Tester le site en local
+
+#### Prérequis
+
+- Node.js (version 14.15.1 LTS utilisée durant le développement)
+- NPM (version 6.14.8 utilisée durant le développement)
+
+#### Installation
+
+```cmd
+npm install
+```
+
+#### Compilation tailwind -> css
+
+```cmd
+npm run compile-css
+```
+
+#### Lancement de l'application
+
+Ouvrez simplement le fichier index.html, aucun serveur n'est requis.
+Pour le développement, il est conseillé d'utiliser l'extension "Live Server" de Visual Studio Code
 
 ## Documents
 
