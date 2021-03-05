@@ -57,6 +57,7 @@ npm run compile-css
 #### Lancement de l'application
 
 Ouvrez simplement le fichier index.html, aucun serveur n'est requis.
+
 Pour le développement, il est conseillé d'utiliser l'extension "Live Server" de Visual Studio Code
 
 ## Documents
