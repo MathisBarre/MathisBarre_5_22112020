@@ -149,13 +149,13 @@ function sendOrder() {
   }
 
   fetch(`${apiUrl}/api/teddies/order`, requestOptions)
-    .catch(() => {
-      alert(error)
-    })
     .then((response) => response.json())
     .then((json) => {
       console.log(json)
       localStorage.removeItem('shoppingCart')
       window.location.href = `${window.location.origin}/orderStatus.html?orderId=${json.orderId}`
+    })
+    .catch(() => {
+      alert(error)
     })
 }
