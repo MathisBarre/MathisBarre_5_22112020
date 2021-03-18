@@ -1,19 +1,11 @@
 ;(() => {
   console.log('Javascript is loaded')
-  const productsInShoppingCart = getProductInShoppingCart()
+  const productsInShoppingCart = Cart.products
   if (productsInShoppingCart === null) return
   hydratePage(productsInShoppingCart)
 })()
 
-function getProductInShoppingCart() {
-  // Get product from local storage
-  return JSON.parse(localStorage.getItem('shoppingCart'))
-}
-
 function hydratePage(productsInShoppingCart) {
-  // Remove "no product" text
-  document.getElementById('noProduct').style.display = 'none'
-
   // Set total price
   document.getElementById('totalPrice').textContent = Cart.getTotalPrice() + '.00€'
 
@@ -100,6 +92,7 @@ function watchValidity(elt, condition) {
 function validInputElt(elt) {
   elt.style.border = 'solid 1px green'
   elt.style.boxShadow = '#00800066 0px 0px 4px'
+  elt.dataset.isValid = true
 }
 
 function invalidInputElt(elt) {
