@@ -10,6 +10,10 @@ Aucune maquette n'est donnée. Il est demandé d'improviser l'interface utilisat
 
 ## Cahier des charges
 
+### TODO
+
+- [x] Vérifier que les inputs sont corrects avant l'envoi au back-end
+- [x] Terminer plan de test
 ### Général
 
 - [x] Création d'une page présentant tous les produits
@@ -23,7 +27,7 @@ Aucune maquette n'est donnée. Il est demandé d'improviser l'interface utilisat
 - [x] Le code devra être indenté
 - [x] Le code devra contenir des commentaires
 - [x] Les promesses devront être utilisées lors des appels ajax
-- [ ] Le code devra être accompagné d'un document planifiant de futurs test unitaires
+- [x] Le code devra être accompagné d'un document planifiant de futurs test unitaires
 
 ### Expérience utilisateur
 
