@@ -22,19 +22,21 @@
   <meta property="twitter:description" content="Orinoco est un site e-commerce à thème. C'est aussi le 5ième projet du parcours développeur web chez OpenClassrooms.">
   <meta property="twitter:image" content="http://orinoco.mathisbarre.com/images/orinoco.png">
 
+  <link rel="canonical" href="https://orinoco-v2.mathisbarre.com/products" />
+
   <link href="./styles/compiled.css" rel="stylesheet">
   <script src="./js/config.js" defer></script>
   <script src="./js/cart.utils.js" defer></script>
   <script src="./js/pages/products.js" defer></script>
 </head>
 <body>
-  <div class="container mx-auto px-4 py-8">
+  <div class="container px-4 py-8 mx-auto">
 
     <!-- HEADER -->
-    <header class="flex justify-between items-center rounded-lg w-full bg-oniPink py-2 px-6">
+    <header class="flex items-center justify-between w-full px-6 py-2 rounded-lg bg-oniPink">
       <a href="/"><img class="h-20 bg-oniPink" src="./images/logo.png" alt="Orinico"></a>
       <nav class="flex">
-        <ul class="list-none font-semibold">
+        <ul class="font-semibold list-none">
           <li>
             <a class="px-4 py-4" href="./cart.html">Panier</a>
           </li>
@@ -44,12 +46,12 @@
     <!-- HEADER -->
 
     <!-- PRODUCT -->
-    <section class="flex flex-col items-stretch lg:flex-row mt-4 rounded-md w-full p-4 bg-oniPink">
-      <div class="w-full lg:w-1/2 md:min-w-1/2 h-full mr-4">
-        <img id="productImage" class="rounded object-cover" src="" alt="">
+    <section class="flex flex-col items-stretch w-full p-4 mt-4 rounded-md lg:flex-row bg-oniPink">
+      <div class="w-full h-full mr-4 lg:w-1/2 md:min-w-1/2">
+        <img id="productImage" class="object-cover rounded" src="" alt="">
       </div>
       <div class="flex flex-col flex-wrap items-start w-full">
-        <h1 class="w-full text-xl text-center font-bold mb-8 mt-8 lg:mt-4">Ours en peluche "<span id="productName"></span>"</h1>
+        <h1 class="w-full mt-8 mb-8 text-xl font-bold text-center lg:mt-4">Ours en peluche "<span id="productName"></span>"</h1>
         <div class="flex items-center">
           <img class="h-5" src="./images/star.svg" alt="">
           <img class="h-5" src="./images/star.svg" alt="">
@@ -58,15 +60,15 @@
           <img class="h-5" src="./images/star.svg" alt="">
           <p class="ml-2"><span class="underline cursor-pointer">56 avis</span> - <span class="underline cursor-pointer">12 produits en stock</span></p>
         </div>
-        <p id="productDescription" class="text-black text-opacity-80 text-justify mt-4"></p>
+        <p id="productDescription" class="mt-4 text-justify text-black text-opacity-80"></p>
         <div class="flex-grow"></div>
-        <h2 class="text-bold font-lg font-bold mt-4">Choisir la couleur de votre produit : </h2>
-        <div id="productColors" class="grid gap-4 mt-4 w-full">
+        <h2 class="mt-4 font-bold text-bold font-lg">Choisir la couleur de votre produit : </h2>
+        <div class="grid w-full gap-4 mt-4">
           <template id="productColor">
-            <div class="h-12 sm:h-20 cursor-pointer flex-grow bg-white rounded transition duration-150 transform hover:scale-105" style="background-color: tan;"></div>
+            <div class="flex-grow h-12 transition duration-150 transform bg-white rounded cursor-pointer sm:h-20 hover:scale-105" style="background-color: tan;"></div>
           </template>
         </div>
-        <button id="addToCart" class="w-full bg-pink-600 text-white text-center font-bold text-lg rounded mt-4 py-2 mb transition duration-150 transform hover:scale-102">Ajouter au panier pour <span id="productPrice"></span></button>
+        <button id="addToCart" class="w-full py-2 mt-4 text-lg font-bold text-center text-white transition duration-150 transform bg-pink-600 rounded mb hover:scale-102">Ajouter au panier pour <span id="productPrice"></span></button>
       </div>
     </section>
     <!-- PRODUCT -->
